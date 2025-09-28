@@ -1,3 +1,5 @@
+import daisyui from 'daisyui'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -10,5 +12,5 @@ export default {
   corePlugins: {
     preflight: false,
   },
-  plugins: [],
+  plugins: [daisyui],
 }

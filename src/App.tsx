@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import Container from './Container'
-import './index.css'
+import { Container } from '@components'
 
 function App() {
   const [count, setCount] = useState(0)
