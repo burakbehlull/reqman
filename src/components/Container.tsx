@@ -15,7 +15,7 @@ function Container() {
 
         <div className="h-[80%] mt-4 flex flex-row gap-4">
           <div className="flex-1 bg-orange-500 p-2 rounded-md">
-            Alt İçerik Sol
+            sol
           </div>
           <div className="flex-1 bg-purple-500 p-2 rounded-md">
             Alt İçerik Sağ
