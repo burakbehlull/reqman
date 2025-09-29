@@ -1,0 +1,68 @@
+import axios from 'axios'
+
+class REQUEST {
+	constructor(baseURL){
+		this.API = axios.create({
+			baseURL: baseURL
+		})
+	}
+	send(method, url, { params = null, data = null, config = {} } = {}){
+		const API = this.API
+		
+		const apiRequest = {
+			get: async () => {
+				try {
+					const response = await API.get(url, { ...config, params });
+					return response.data;
+				} catch (error) {
+					console.error('GET Error:', error);
+					throw error;
+				}
+			},
+			post: async () => {
+				try {
+					const response = await API.post(url, data, config);
+					return response.data;
+				} catch (error) {
+					console.error('POST Error:', error);
+					throw error;
+				}
+			},
+			put: async () => {
+				try {
+					const response = await API.put(url, data, config);
+					return response.data;
+				} catch (error) {
+					console.error('PUT Error:', error);
+					throw error;
+				}
+			},
+			patch: async () => {
+				try {
+					const response = await API.patch(url, data, config);
+					return response.data;
+				} catch (error) {
+					console.error('PATCH Error:', error);
+					throw error;
+				}
+			},
+			delete: async () => {
+				try {
+					const response = await API.delete(url, {
+						data,
+						...config
+					});
+					return response.data;
+				} catch (error) {
+					console.error('DELETE Error:', error);
+					throw error;
+				}
+			}
+		};
+		return apiRequest[method]()
+	}
+}
+
+const req = new REQUEST()
+console.log(await req.send("post", "https://jsonplaceholder.typicode.com/posts"))
+
