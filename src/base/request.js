@@ -63,6 +63,4 @@ class REQUEST {
 	}
 }
 
-const req = new REQUEST()
-console.log(await req.send("post", "https://jsonplaceholder.typicode.com/posts"))
-
+export default REQUEST

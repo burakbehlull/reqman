@@ -13,11 +13,16 @@ export default defineConfig(({ command }) => {
   const isBuild = command === 'build'
   const sourcemap = isServe || !!process.env.VSCODE_DEBUG
 
+  function way(...name){
+	return path.join(__dirname, ...name)
+  }
+
   return {
     resolve: {
       alias: {
-        '@': path.join(__dirname, 'src'),
-        '@components': path.join(__dirname, 'src', 'components'),
+        '@': way('src'),
+        '@components': way('src', 'components'),
+        '@request': way('src', 'request', 'index.js'),
       },
     },
     plugins: [
