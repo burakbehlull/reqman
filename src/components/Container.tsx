@@ -14,11 +14,11 @@ function Container() {
         </div>
 
         <div className="h-[80%] mt-4 flex flex-row gap-4">
-          <div className="flex-1 bg-orange-500 p-2 rounded-md">
-            sol
+          <div className="flex-1 p-2 rounded-md">
+            <textarea className="textarea h-[95%] w-[90%]" placeholder="JSON"></textarea>
           </div>
           <div className="flex-1 bg-purple-500 p-2 rounded-md">
-            Alt İçerik Sağ
+            YANIT ALANI
           </div>
         </div>
       </div>
