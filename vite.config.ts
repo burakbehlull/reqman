@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 import electron from 'vite-plugin-electron/simple'
 import pkg from './package.json'
 
-// https://vitejs.dev/config/
+
 export default defineConfig(({ command }) => {
   rmSync('dist-electron', { recursive: true, force: true })
 
@@ -22,7 +22,7 @@ export default defineConfig(({ command }) => {
       alias: {
         '@': way('src'),
         '@components': way('src', 'components'),
-        '@request': way('src', 'request', 'index.js'),
+        '@request': way('src', 'base', 'request.js'),
       },
     },
     plugins: [

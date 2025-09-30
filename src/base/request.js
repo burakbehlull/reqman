@@ -10,43 +10,43 @@ class REQUEST {
 		const API = this.API
 		
 		const apiRequest = {
-			get: async () => {
+			GET: async () => {
 				try {
 					const response = await API.get(url, { ...config, params });
 					return response.data;
 				} catch (error) {
 					console.error('GET Error:', error);
-					throw error;
+					return null
 				}
 			},
-			post: async () => {
+			POST: async () => {
 				try {
 					const response = await API.post(url, data, config);
 					return response.data;
 				} catch (error) {
 					console.error('POST Error:', error);
-					throw error;
+					return null;
 				}
 			},
-			put: async () => {
+			PUT: async () => {
 				try {
 					const response = await API.put(url, data, config);
 					return response.data;
 				} catch (error) {
 					console.error('PUT Error:', error);
-					throw error;
+					return null;
 				}
 			},
-			patch: async () => {
+			PATCH: async () => {
 				try {
 					const response = await API.patch(url, data, config);
 					return response.data;
 				} catch (error) {
 					console.error('PATCH Error:', error);
-					throw error;
+					return null
 				}
 			},
-			delete: async () => {
+			DELETE: async () => {
 				try {
 					const response = await API.delete(url, {
 						data,
@@ -55,7 +55,7 @@ class REQUEST {
 					return response.data;
 				} catch (error) {
 					console.error('DELETE Error:', error);
-					throw error;
+					return null
 				}
 			}
 		};
