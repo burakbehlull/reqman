@@ -3,7 +3,7 @@ export default function TabUI({
 }){
 	return (
 		<>
-			<div className="tabs tabs-lift">
+			<div className="tabs tabs-lift h-[94%]">
 				{tabs?.map((tab, i)=> <>
 					<label className="tab">
 						<input type="radio" name="my_tabs_4" />
@@ -11,7 +11,6 @@ export default function TabUI({
 						{tab?.name}
 					</label>
 					<div className="tab-content bg-base-100 border-base-300 p-6">{tab?.content}</div>
-
 				</>)}
 			</div>
 		</>

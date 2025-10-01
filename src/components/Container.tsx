@@ -1,4 +1,4 @@
-import { Sidebar, ContentHeader, TabUI } from "@components";
+import { Sidebar, ContentHeader, TabsContent } from "@components";
 import { useState } from "react"
 
 import Request from "@request"
@@ -45,25 +45,10 @@ function Container() {
         <div className="h-[80%] mt-4 flex flex-row gap-4">
 		  
           <div className="flex-1 p-2 rounded-md">
-			<TabUI 
-				tabs={[
-					{
-						name: 'xd',
-						content: 'xd children'
-					},
-					{
-						name: 'he',
-						content: 'he children'
-					}
-				]}
+			<TabsContent 
+				handleChange={handleChange}
+				values={form}
 			/>
-            <textarea
-              name="json"
-              className="resize-none textarea h-[95%] w-[90%]" 
-              placeholder="JSON"
-              value={form.json}
-              onChange={handleChange}
-            ></textarea>
           </div>
           <div className="flex-1 p-2 rounded-md">
             <textarea
