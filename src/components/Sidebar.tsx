@@ -8,7 +8,7 @@ export default function Sidebar() {
         Request Man
       </div>
 
-      <ul className="menu p-6 flex-1 text-sm space-y-2 w-96">
+      <ul className="menu p-6 flex-1 text-sm space-y-2 w-[38vh]">
         <li>
           <a className="flex items-center gap-4 p-3 rounded-lg hover:bg-neutral hover:text-primary-content transition-all">
             <FaHome size={22} /> Anasayfa

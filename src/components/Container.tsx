@@ -1,4 +1,4 @@
-import { Sidebar, ContentHeader } from "@components";
+import { Sidebar, ContentHeader, TabUI } from "@components";
 import { useState } from "react"
 
 import Request from "@request"
@@ -29,7 +29,7 @@ function Container() {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen">
-      <div className="w-full lg:basis-1/5 p-4">
+      <div className="w-[80wh] p-4">
         <Sidebar />
       </div>
 
@@ -43,7 +43,20 @@ function Container() {
         </div>
 
         <div className="h-[80%] mt-4 flex flex-row gap-4">
+		  
           <div className="flex-1 p-2 rounded-md">
+			<TabUI 
+				tabs={[
+					{
+						name: 'xd',
+						content: 'xd children'
+					},
+					{
+						name: 'he',
+						content: 'he children'
+					}
+				]}
+			/>
             <textarea
               name="json"
               className="resize-none textarea h-[95%] w-[90%]" 
