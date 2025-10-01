@@ -1,6 +1,26 @@
-import { TabUI } from "@components";
+import { TabUI, DynamicInputs } from "@components";
+import { useState, useEffect } from "react"
 
-export default function TabsContent({values, handleChange}){
+
+export default function TabsContent({values, handleChange, setter}){
+	const [rows, setRows] = useState([
+		{ key: null, content: null }
+	])
+	const headerParser = ()=> {
+		if(rows.length > 0){
+			const obj = rows.reduce((acc, item) => {
+			  acc[item.key] = item.content;
+			  return acc;
+			}, {});
+			return obj
+		}
+		
+	}
+	useEffect(()=> {
+		const parsed = headerParser()
+		setter({...values, headers: parsed})
+	},[rows])
+	
 	return(
 		<>
 		<TabUI 
@@ -19,8 +39,9 @@ export default function TabsContent({values, handleChange}){
 						</>
 					},
 					{
-						name: 'he',
-						content: 'he children'
+						name: 'headers',
+						content: <DynamicInputs rows={rows} setRows={setRows} />
+						
 					}
 				]}
 			/>

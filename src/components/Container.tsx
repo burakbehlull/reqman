@@ -9,6 +9,7 @@ function Container() {
     json: '{}',
     uri: 'http://',
     method: 'GET',
+	headers: {}
   })
 
   const [response, setResponse] = useState()
@@ -21,7 +22,10 @@ function Container() {
       const parsed = JSON.parse(form.json)
       const request = new Request()
       const response = await request.send(form.method, form.uri, {
-         data: parsed
+         data: parsed,
+		 config: {
+			headers: form.headers
+		 }
       })
       const parseResponse = JSON.stringify(response)
       setResponse(parseResponse)
@@ -48,6 +52,8 @@ function Container() {
 			<TabsContent 
 				handleChange={handleChange}
 				values={form}
+				setter={setForm}
+				
 			/>
           </div>
           <div className="flex-1 p-2 rounded-md">
