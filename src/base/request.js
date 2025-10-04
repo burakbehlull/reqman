@@ -1,14 +1,22 @@
-import axios from 'axios'
+import axios from 'axios';
 
 class REQUEST {
-	constructor(baseURL){
+	constructor(baseURL = '') {
 		this.API = axios.create({
 			baseURL: baseURL
-		})
+		});
 	}
-	send(method, url, { params = null, data = null, config = {} } = {}){
-		const API = this.API
-		
+
+	send(method, url, { params = null, data = null, config = {} } = {}) {
+		const API = this.API;
+
+		if (!(data instanceof FormData)) {
+			config.headers = {
+				'Content-Type': 'application/json',
+				...(config.headers || {})
+			};
+		}
+
 		const apiRequest = {
 			GET: async () => {
 				try {
@@ -16,7 +24,7 @@ class REQUEST {
 					return response.data;
 				} catch (error) {
 					console.error('GET Error:', error);
-					return null
+					return error.response?.data || error.message;
 				}
 			},
 			POST: async () => {
@@ -25,7 +33,7 @@ class REQUEST {
 					return response.data;
 				} catch (error) {
 					console.error('POST Error:', error);
-					return null;
+					return error.response?.data || error.message;
 				}
 			},
 			PUT: async () => {
@@ -34,7 +42,7 @@ class REQUEST {
 					return response.data;
 				} catch (error) {
 					console.error('PUT Error:', error);
-					return null;
+					return error.response?.data || error.message;
 				}
 			},
 			PATCH: async () => {
@@ -43,7 +51,7 @@ class REQUEST {
 					return response.data;
 				} catch (error) {
 					console.error('PATCH Error:', error);
-					return null
+					return error.response?.data || error.message;
 				}
 			},
 			DELETE: async () => {
@@ -55,12 +63,13 @@ class REQUEST {
 					return response.data;
 				} catch (error) {
 					console.error('DELETE Error:', error);
-					return null
+					return error.response?.data || error.message;
 				}
 			}
 		};
-		return apiRequest[method]()
+
+		return apiRequest[method.toUpperCase()]?.();
 	}
 }
 
-export default REQUEST
+export default REQUEST;

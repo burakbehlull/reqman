@@ -9,7 +9,8 @@ function Container() {
     json: '{}',
     uri: 'http://',
     method: 'GET',
-	headers: {}
+	headers: {},
+	files: []
   })
 
   const [response, setResponse] = useState()
@@ -18,18 +19,63 @@ function Container() {
         setForm({...form, [e.target.name]: e.target.value})
   }
 
-  async function handleSubmit(){
-      const parsed = JSON.parse(form.json)
-      const request = new Request()
-      const response = await request.send(form.method, form.uri, {
-         data: parsed,
-		 config: {
-			headers: form.headers
-		 }
-      })
-      const parseResponse = JSON.stringify(response)
-      setResponse(parseResponse)
-  }
+  async function handleSubmit() {
+	  const request = new Request();
+	  let dataToSend;
+	  let isFormData = false;
+
+	  const hasFiles =
+		Array.isArray(form.files) &&
+		form.files.some((group) => group.files && group.files.length > 0);
+
+	  if (hasFiles) {
+		isFormData = true;
+		const formData = new FormData();
+
+		try {
+		  const parsed = JSON.parse(form.json);
+		  for (const [key, value] of Object.entries(parsed)) {
+			formData.append(key, typeof value === "object" ? JSON.stringify(value) : value);
+		  }
+		} catch (err) {
+		  console.warn("JSON parse edilemedi:", err);
+		}
+
+		form.files.forEach((group) => {
+		  if (!group.fieldName) return;
+		  group.files.forEach((file) => {
+			formData.append(group.fieldName, file);
+		  });
+		});
+
+		dataToSend = formData;
+	  } else {
+		try {
+		  dataToSend = JSON.parse(form.json);
+		} catch (err) {
+		  console.warn("Geçersiz JSON:", err);
+		  dataToSend = {};
+		}
+	  }
+
+	  try {
+		const response = await request.send(form.method, form.uri, {
+		  data: dataToSend,
+		  config: {
+			headers: {
+			  ...form.headers,
+			  ...(isFormData ? {} : { "Content-Type": "application/json" }),
+			},
+		  },
+		});
+
+		const parseResponse = JSON.stringify(response, null, 2);
+		setResponse(parseResponse);
+	  } catch (error) {
+		setResponse(error.message);
+	  }
+	}
+
 
   return (
     <div className="flex flex-col lg:flex-row h-screen">
