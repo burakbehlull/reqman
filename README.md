@@ -6,3 +6,4 @@
 - Headers support,
 - File upload support,
 - Form Body submission support
+- Query & Param support

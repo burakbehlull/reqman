@@ -10,6 +10,7 @@ function Container() {
     uri: 'http://',
     method: 'GET',
 	headers: {},
+	queries: {},
 	files: []
   })
 
@@ -60,6 +61,7 @@ function Container() {
 
 	  try {
 		const response = await request.send(form.method, form.uri, {
+		  params: form.queries,
 		  data: dataToSend,
 		  config: {
 			headers: {

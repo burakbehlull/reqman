@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 export default function TabsContent({ values, handleChange, setter }) {
   const [rows, setRows] = useState([{ key: null, content: null }]);
+  const [queries, setQueries] = useState([{ key: null, content: null }]);
   const [fileGroups, setFileGroups] = useState([
     { fieldName: "file", files: [] },
   ]);
@@ -16,11 +17,26 @@ export default function TabsContent({ values, handleChange, setter }) {
       return obj;
     }
   };
+  
+  const queryParser = () => {
+    if (queries.length > 0) {
+      const obj = queries.reduce((acc, item) => {
+        if (item.key) acc[item.key] = item.content;
+        return acc;
+      }, {});
+      return obj;
+    }
+  };
 
   useEffect(() => {
-    const parsed = headerParser();
-    setter({ ...values, headers: parsed });
+    const headerParsed = headerParser();
+    setter({ ...values, headers: headerParsed });
   }, [rows]);
+  
+  useEffect(() => {
+    const queryParsed = queryParser();
+    setter({ ...values, queries: queryParsed });
+  }, [queries]);
 
   const handleFileChange = (index, e) => {
     const selected = Array.from(e.target.files);
@@ -65,6 +81,10 @@ export default function TabsContent({ values, handleChange, setter }) {
           {
             name: "headers",
             content: <DynamicInputs rows={rows} setRows={setRows} />,
+          },
+		  {
+            name: "queries",
+            content: <DynamicInputs rows={queries} setRows={setQueries} />
           },
           {
             name: "files",
