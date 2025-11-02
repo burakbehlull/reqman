@@ -5,3 +5,9 @@
 body {
 	@apply p-0 m-0 box-border font-mono;
 }
+
+.draggable {
+	-webkit-user-select: none;
+    -webkit-app-region: drag;
+	cursor: pointer;
+}
