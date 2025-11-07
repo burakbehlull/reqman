@@ -2,6 +2,7 @@ import { ipcRenderer, contextBridge } from 'electron'
 
 contextBridge.exposeInMainWorld('electronAPI', {
   setLanguage: (lang) => ipcRenderer.send('set-language', lang),
+  getLanguages: () => ipcRenderer.invoke("get-languages"),
 });
 
 // --------- Expose some API to the Renderer process ---------

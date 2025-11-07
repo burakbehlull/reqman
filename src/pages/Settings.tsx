@@ -1,12 +1,18 @@
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next";
 
 function Settings() {
   const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState([])
 
   const handleChange = (e) => {
     const lang = e.target.value;
     i18n.changeLanguage(lang);
   };
+
+  useEffect(() => {
+    window.electronAPI?.getLanguages().then((langs) => setLang(langs));
+  }, []);
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
@@ -17,8 +23,7 @@ function Settings() {
         onChange={handleChange}
         style={{ marginLeft: "10px" }}
       >
-        <option value="en">English</option>
-        <option value="tr">Türkçe</option>
+        {lang?.map((lan)=><option value={lan?.code}>{lan?.code}</option>)}
       </select>
     </div>
   );

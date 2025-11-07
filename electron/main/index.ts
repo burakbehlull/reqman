@@ -31,7 +31,6 @@ let currentLang = 'tr'; // varsayılan dil
 const preload = path.join(__dirname, '../preload/index.mjs');
 const indexHtml = path.join(RENDERER_DIST, 'index.html');
 
-// 🌐 Dil dosyalarını public/languages klasöründen okuyalım
 const LANG_DIR = path.join(process.env.VITE_PUBLIC || '', 'languages');
 
 function loadLangFile(lang: string) {
@@ -105,6 +104,17 @@ ipcMain.on('set-language', (_, lang) => {
 });
 
 app.whenReady().then(createWindow);
+
+ipcMain.handle("get-languages", () => {
+  const langDir = path.join(process.env.VITE_PUBLIC ?? "", "languages");
+  const files = fs.readdirSync(langDir);
+  return files
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => ({
+      code: path.basename(f, ".json"),
+      file: f,
+    }));
+});
 
 app.on('window-all-closed', () => {
   win = null;
