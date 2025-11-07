@@ -2,8 +2,11 @@
   "request_button_text": "İstek at",
   "request_button_text_description": "Send request button text field",
   
-  "sidebar_home_page": "Anasayfa",
-  "sidebar_home_page_description": "Home",
+  "sidebar_home_button_text": "Anasayfa",
+  "sidebar_home_button_text_description": "Sidebar Home Navigator Button",
+  
+  "sidebar_settings_button_text": "Ayarlar",
+  "sidebar_settings_button_text_description": "Application Settings Navigator Button",
   
   "request_bar_selectbox_text": "İstek Methodu",
   "request_bar_selectbox_text_description": "Place to select the request sending method",

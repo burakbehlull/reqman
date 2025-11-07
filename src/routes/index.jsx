@@ -1,5 +1,5 @@
 import { useRoutes } from 'react-router-dom'
-import { RequestPage } from '@pages'
+import { RequestPage, Settings } from '@pages'
 
 export default function Routes(){
 
@@ -7,6 +7,10 @@ export default function Routes(){
 		{
 			path: '/',
 			element: <RequestPage />,
+		},
+		{
+			path: '/settings',
+			element: <Settings />,
 		},
 		
 	])
