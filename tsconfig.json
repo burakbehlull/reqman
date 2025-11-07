@@ -16,12 +16,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
+	"typeRoots": ["node_modules/@types", "src/@types"],
     "paths": {
       "@/*": ["src/*"],
       "@components": ["src/components"],       
       "@components/*": ["src/components/*"],
       "@request": ["src/base/request"],
-      "@request/*": ["src/base/request/*"]
+      "@request/*": ["src/base/request/*"],
+      "@pages": ["src/pages/index"],
+      "@routes": ["src/routes/index"]
+	  
     }
   },
   "include": ["src", "electron"],

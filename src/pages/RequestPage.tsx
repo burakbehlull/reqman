@@ -2,22 +2,8 @@ import { ContentHeader, TabsContent } from "@components";
 import { useState, ChangeEvent } from "react";
 import Request from "@request";
 
-interface FileGroup {
-  fieldName: string;
-  files: File[];
-}
-
-interface FormState {
-  json: string;
-  uri: string;
-  method: string;
-  headers: Record<string, string>;
-  queries: Record<string, string>;
-  files: FileGroup[];
-}
-
 function Container() {
-  const [form, setForm] = useState<FormState>({
+  const [form, setForm] = useState<IType.FormState>({
     json: "{}",
     uri: "http://",
     method: "GET",
@@ -92,8 +78,8 @@ function Container() {
   }
 
   return (
-      
-    <div className="h-[20%] p-2 rounded-md">
+    <>
+		<div className="h-[20%] p-2 rounded-md">
           <ContentHeader handleChange={handleChange} handleSubmit={handleSubmit} values={form} />
         </div>
 
@@ -110,8 +96,8 @@ function Container() {
               readOnly
             ></textarea>
           </div>
-    </div>
-    
+		</div>
+    </>
   );
 }
 

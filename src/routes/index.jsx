@@ -1,12 +1,14 @@
 import { useRoutes } from 'react-router-dom'
+import { RequestPage } from '@pages'
 
 export default function Routes(){
 
     return useRoutes([
 		{
 			path: '/',
-			element: <h1>xd</h1>,
+			element: <RequestPage />,
 		},
+		
 	])
 }
 
