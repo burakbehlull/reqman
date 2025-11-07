@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next";
 
 function Settings() {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState([])
 
-  const handleChange = (e) => {
-    const lang = e.target.value;
-    i18n.changeLanguage(lang);
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+	  const newLang = e.target.value;
+	  i18n.changeLanguage(newLang);
+	  localStorage.setItem("language", newLang);
   };
 
   useEffect(() => {

@@ -6,7 +6,6 @@ import os from 'node:os';
 import fs from 'fs';
 import { update } from './update';
 
-const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 process.env.APP_ROOT = path.join(__dirname, '../..');
@@ -27,7 +26,7 @@ if (!app.requestSingleInstanceLock()) {
 }
 
 let win: BrowserWindow | null = null;
-let currentLang = 'tr'; // varsayılan dil
+let currentLang = 'tr';
 const preload = path.join(__dirname, '../preload/index.mjs');
 const indexHtml = path.join(RENDERER_DIST, 'index.html');
 
@@ -45,7 +44,7 @@ function loadLangFile(lang: string) {
 }
 
 function createMenu(langData: any) {
-  const menuTemplate = [
+  const menuTemplate : any = [
     {
       label: langData?.menu?.title || 'Request Man',
       submenu: [
@@ -61,6 +60,24 @@ function createMenu(langData: any) {
         { label: langData?.menu?.version || 'Versiyon', click: () => null },
       ],
     },
+	
+	/*{
+		label: 'Geliştirici',
+		submenu: [
+		  {
+			label: 'Toggle DevTools',
+			accelerator: 'Ctrl+Shift+I', // Kısayol (Windows/Linux)
+			click: () => {
+			  const focusedWindow = BrowserWindow.getFocusedWindow();
+			  if (focusedWindow) {
+				focusedWindow.webContents.toggleDevTools();
+			  }
+			},
+		  },
+		  { role: 'reload', label: 'Yeniden Yükle' },
+		]
+	}*/
+  
   ];
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));

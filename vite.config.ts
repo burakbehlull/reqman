@@ -29,6 +29,8 @@ export default defineConfig(({ command }) => {
 		'@request': way('src', 'base', 'request')
 	  }
     },
+	publicDir: 'public',
+	base: './',
     plugins: [
       react(),
       electron({

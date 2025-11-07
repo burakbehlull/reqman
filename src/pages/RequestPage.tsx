@@ -3,7 +3,7 @@ import { useState, ChangeEvent } from "react";
 import Request from "@request";
 
 function Container() {
-  const [form, setForm] = useState<IType.FormState>({
+  const [form, setForm] = useState<ITypes.FormState>({
     json: "{}",
     uri: "http://",
     method: "GET",
