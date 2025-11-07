@@ -1,6 +1,6 @@
 {
   "name": "reqman",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist-electron/main/index.js",
   "description": "Easy request tool",
   "author": "Burak Behlül <burakbehlull>",
@@ -28,7 +28,8 @@
     "i18next-http-backend": "^3.0.2",
     "monaco-editor": "^0.53.0",
     "react-i18next": "^16.2.4",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.42.1",

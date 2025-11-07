@@ -4,9 +4,6 @@ import "./config/i18n";
 import { useEffect } from "react";
 import i18next from "i18next";
 
-
-
-
 function App() {
 
 	function handleLanguage(){

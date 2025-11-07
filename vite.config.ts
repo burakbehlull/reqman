@@ -24,6 +24,8 @@ export default defineConfig(({ command }) => {
       alias: {
 		'@': way('src'),
 		'@components': way('src', 'components'),
+		'@pages': way('src', 'pages'),
+		'@routes': way('src', 'routes', 'index'),
 		'@request': way('src', 'base', 'request')
 	  }
     },
