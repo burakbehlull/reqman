@@ -28,13 +28,11 @@ function Container() {
 
   const [response, setResponse] = useState<string>("");
 
-  // input değiştiğinde formu günceller
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // formu gönderir
   async function handleSubmit() {
     const request = new Request();
     let dataToSend: any;

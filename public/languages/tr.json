@@ -1,0 +1,32 @@
+{
+  "request_button_text": "İstek at",
+  "request_button_text_description": "Send request button text field",
+  
+  "sidebar_home_page": "Anasayfa",
+  "sidebar_home_page_description": "Home",
+  
+  "request_bar_selectbox_text": "İstek Methodu",
+  "request_bar_selectbox_text_description": "Place to select the request sending method",
+  
+  "select_language": "Dil seç: ",
+  "select_language_description": "Choose a language",
+  
+  
+  "menu": {
+    "new": "Yeni",
+	"new_description": "New File",
+	
+    "open": "Aç",
+	"open_description": "File Open",
+	
+	
+    "exit": "Çıkış",
+	"exit_description":"Application Exit",
+	
+    "about": "Hakkında",
+	"about_description": "Application about",
+	
+    "version": "Versiyon",
+	"version_description": "version"
+  }
+}

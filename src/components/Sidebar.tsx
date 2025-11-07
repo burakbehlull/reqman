@@ -1,6 +1,9 @@
 import { FaHome, FaUser, FaCog, FaSignOutAlt, FaChartPie } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar() {
+  const { t, i18n } = useTranslation();
+
   return (
   
     <div className="h-full border border-solid border-stone-300 shadow-xl rounded-xl flex flex-col">
@@ -11,7 +14,7 @@ export default function Sidebar() {
       <ul className="menu p-6 flex-1 text-sm space-y-2 w-[38vh]">
         <li>
           <a className="flex items-center gap-4 p-3 rounded-lg hover:bg-neutral hover:text-primary-content transition-all">
-            <FaHome size={22} /> Anasayfa
+            <FaHome size={22} /> {t("sidebar_home_page")}
           </a>
         </li>
       </ul>
