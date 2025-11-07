@@ -1,0 +1,37 @@
+{
+  "ALERT": "Those ending with description are for example purposes only.",
+	
+  "request_button_text": "",
+  "request_button_text_description": "Send request button text field",
+  
+  "sidebar_home_button_text": "",
+  "sidebar_home_button_text_description": "Sidebar Home Navigator Button",
+  
+  "sidebar_settings_button_text": "",
+  "sidebar_settings_button_text_description": "Application Settings Navigator Button",
+  
+  "request_bar_selectbox_text": "",
+  "request_bar_selectbox_text_description": "Place to select the request sending method",
+  
+  "select_language": "",
+  "select_language_description": "Choose a language",
+  
+  
+  "menu": {
+    "new": "",
+	"new_description": "New File",
+	
+    "open": "",
+	"open_description": "File Open",
+	
+	
+    "exit": "",
+	"exit_description":"Application Exit",
+	
+    "about": "",
+	"about_description": "Application about",
+	
+    "version": "",
+	"version_description": "version"
+  }
+}
