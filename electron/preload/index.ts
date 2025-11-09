@@ -5,7 +5,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   getLanguages: () => ipcRenderer.invoke("get-languages"),
 });
 
-// --------- Expose some API to the Renderer process ---------
+
 contextBridge.exposeInMainWorld('ipcRenderer', {
   on(...args: Parameters<typeof ipcRenderer.on>) {
     const [channel, listener] = args
@@ -24,11 +24,9 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
     return ipcRenderer.invoke(channel, ...omit)
   },
 
-  // You can expose other APTs you need here.
-  // ...
 })
 
-// --------- Preload scripts loading ---------
+
 function domReady(condition: DocumentReadyState[] = ['complete', 'interactive']) {
   return new Promise(resolve => {
     if (condition.includes(document.readyState)) {
@@ -56,12 +54,7 @@ const safeDOM = {
   },
 }
 
-/**
- * https://tobiasahlin.com/spinkit
- * https://connoratherton.com/loaders
- * https://projects.lukehaas.me/css-loaders
- * https://matejkustec.github.io/SpinThatShit
- */
+
 function useLoading() {
   const className = `loaders-css__square-spin`
   const styleContent = `
@@ -120,4 +113,4 @@ window.onmessage = (ev) => {
   ev.data.payload === 'removeLoading' && removeLoading()
 }
 
-setTimeout(removeLoading, 4999)
+setTimeout(removeLoading, 500)

@@ -110,8 +110,11 @@ async function createWindow() {
     if (url.startsWith('https:')) shell.openExternal(url);
     return { action: 'deny' };
   });
-
-  update(win);
+  
+  win.once('ready-to-show', () => win.show());
+  
+  if (app.isPackaged) update(win);
+  
 }
 
 ipcMain.on('set-language', (_, lang) => {

@@ -15,11 +15,35 @@
   "scripts": {
     "dev": "vite",
     "start": "vite dev",
-    "build": "tsc && vite build && electron-builder",
+    "build": "npm prune --production && tsc && vite build && electron-builder",
     "preview": "vite preview",
     "pree2e": "vite build --mode=test",
     "e2e": "playwright test"
   },
+  
+  "build": {
+	  "appId": "com.reqman.app",
+	  "productName": "Reqman",
+	  "asar": true,
+	  "compression": "maximum",
+	  "directories": {
+		"output": "release"
+	  },
+	  "files": [
+		"dist-electron/",
+		"dist/",
+		"package.json"
+	  ],
+	  "extraMetadata": {
+		"main": "dist-electron/main/index.js"
+	  },
+	  "win": {
+		"target": "nsis",
+		"icon": "public/icon.ico"
+	  }
+   },
+
+
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
     "axios": "^1.12.2",
